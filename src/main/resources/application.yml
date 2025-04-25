@@ -21,11 +21,8 @@ spring:
 
   kafka:
     bootstrap-servers: localhost:9092
-    consumer:
-      group-id: order-group
-      auto-offset-reset: earliest
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer-properties:
-      spring.json.trusted.packages: "*"
+      value-serializer: org.apache.kafka.common.serialization.JsonSerializer
+    properties:
+      spring.json.type.mapping: orderCreatedEvent:smart.parcel.delivery.orderservice.dto.OrderCreatedEvent
